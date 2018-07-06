@@ -163,7 +163,7 @@ namespace UserInterface
         private void ProfileMenuItem_Click(object sender, RoutedEventArgs e)
         {
             currentGrid.Visibility = Visibility.Collapsed;
-            currentGrid = ProfileGrid;
+            currentGrid = ProfileDoctorGrid;
             currentGrid.Visibility = Visibility.Visible;
         }
 
@@ -182,22 +182,16 @@ namespace UserInterface
             }
             currentGrid.Tag = ProfileWorkGrid;
             (currentGrid.Tag as Grid).Visibility = Visibility.Visible;
-            (sender as Button).Background = Brushes.OrangeRed;
-            PersonalProfileButton.Background = Brushes.Red;
-            OwnScheduleButton.Background = Brushes.Red;
         }
 
-        private void PersonalProfileButton_Click(object sender, RoutedEventArgs e)
+        private void ClientsProfileButton_Click(object sender, RoutedEventArgs e)
         {
             if (currentGrid.Tag != null)
             {
                 (currentGrid.Tag as Grid).Visibility = Visibility.Collapsed;
             }
-            currentGrid.Tag = ProfileInfoGrid;
+            currentGrid.Tag = ProfileClientsGrid;
             (currentGrid.Tag as Grid).Visibility = Visibility.Visible;
-            (sender as Button).Background = Brushes.OrangeRed;
-            WorkProfileButton.Background = Brushes.Red;
-            OwnScheduleButton.Background = Brushes.Red;
         }
 
         private void OwnScheduleButton_Click(object sender, RoutedEventArgs e)
@@ -208,9 +202,6 @@ namespace UserInterface
             }
             currentGrid.Tag = ProfileScheduleGrid;
             (currentGrid.Tag as Grid).Visibility = Visibility.Visible;
-            (sender as Button).Background = Brushes.OrangeRed;
-            WorkProfileButton.Background = Brushes.Red;
-            PersonalProfileButton.Background = Brushes.Red;
         }
     }
 }
