@@ -20,16 +20,7 @@ namespace DataAccessLayer.Migrations
         protected override void Seed(DataAccessLayer.Context.MyContext _context)
         {
             context = _context;
-
-            //context.Doctors.Add(new Doctor
-            //{
-            //    Name = "Vlad",
-            //    Surname = "Soloduha",
-            //    ThirdName = "Valentinovich",
-            //    DepartmentId = 1,
-            //    Password = "1234",
-            //    DoctorPhoneNumber = "0934329285"
-            //});
+            
             FillAllTables();
             context.SaveChanges();
         }
@@ -135,6 +126,7 @@ namespace DataAccessLayer.Migrations
 
         //    context.SaveChanges();
         //}
+
         public void FillNotes()
         {
             context.Notes.AddRange(new List<Note> {

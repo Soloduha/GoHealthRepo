@@ -4,9 +4,12 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
+using BLL.DTO;
 using DataAccessLayer;
 using DataAccessLayer.Entities;
 using DataAccessLayer.Repository;
+using BLL.BllMapper;
 
 namespace BLL
 {
@@ -19,17 +22,20 @@ namespace BLL
 
     public static class TestClass
     {
-        static public ICollection<DoctorDTO>GetSomeDoctors()
+        static public ICollection<PatientDTO>GetSomePatients()
         {
-            GHRepository<Doctor> repo = new GHRepository<Doctor>();
-            ObservableCollection<DoctorDTO> doctors = new ObservableCollection<DoctorDTO>();
-            List<Doctor> doctors_old = new List<Doctor>(repo.GetEntities(x => x.Id > 0).ToList().OrderBy(x=>x.Surname));
+            GHRepository<Patient> repo = new GHRepository<Patient>();
+            List<Patient> patients_old = new List<Patient>(repo.GetEntities(x => x.Id > 0).ToList().OrderBy(x=>x.Surname));
             
-            foreach (var a in doctors_old)
+            ObservableCollection<PatientDTO> patients = new ObservableCollection<PatientDTO>();
+            PatientDTO patient;
+
+            foreach (var a in patients_old)
             {
-                doctors.Add(new DoctorDTO {Name=a.Name,Surname=a.Surname,ThirdName=a.ThirdName});
+                DTOConverter.Convert(a,out patient);
+                patients.Add(patient);
             }
-            return doctors;
+            return patients;
         }
     }
 }
