@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BLL.DTO
 {
-    public class NoteDTO
+    public class NoteDTO : BaseDTO.BaseModelDTO
     {
         public string Medicine { get; set; }
     }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BLL.DTO
 {
-    public class ReceptionDTO
+    public class ReceptionDTO : BaseDTO.BaseModelDTO
     {
         public DateTime DateOfRegistration { get; set; }
     }

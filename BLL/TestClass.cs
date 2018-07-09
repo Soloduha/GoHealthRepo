@@ -13,13 +13,6 @@ using BLL.BllMapper;
 
 namespace BLL
 {
-    public class DoctorDTO
-    {
-        public string Name { get; set; }
-        public string Surname { get; set; }
-        public string ThirdName { get; set; }
-    }
-
     public static class TestClass
     {
         static public ICollection<PatientDTO>GetSomePatients()
@@ -32,10 +25,26 @@ namespace BLL
 
             foreach (var a in patients_old)
             {
-                DTOConverter.Convert(a,out patient);
+                patient=DTOConverter.Convert<Patient,PatientDTO>(a);
                 patients.Add(patient);
             }
             return patients;
+        }
+
+        static public ICollection<DoctorDTO> GetSomeDoctors()
+        {
+            GHRepository<Doctor> repo = new GHRepository<Doctor>();
+            List<Doctor> doctors_old = new List<Doctor>(repo.GetEntities(x => x.Id > 0).ToList().OrderBy(x => x.Surname));
+
+            ObservableCollection<DoctorDTO> doctors = new ObservableCollection<DoctorDTO>();
+            DoctorDTO doctor;
+
+            foreach (var a in doctors_old)
+            {
+                doctor = DTOConverter.Convert<Doctor,DoctorDTO>(a);
+                doctors.Add(doctor);
+            }
+            return doctors;
         }
     }
 }

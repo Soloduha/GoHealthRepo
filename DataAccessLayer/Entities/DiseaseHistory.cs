@@ -20,6 +20,6 @@ namespace DataAccessLayer.Entities
 
         public Patient Patient { get; set; }
 
-        public ICollection<Note> Note { get; set; }
+        public virtual ICollection<Note> Note { get; set; }
     }
 }

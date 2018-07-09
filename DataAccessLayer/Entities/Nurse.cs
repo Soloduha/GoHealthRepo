@@ -27,6 +27,6 @@ namespace DataAccessLayer.Entities
         public string PhoneNumber { get; set; }
 
 
-        public ICollection<Reception> Reception { get; set; }
+        public virtual ICollection<Reception> Reception { get; set; }
     }
 }

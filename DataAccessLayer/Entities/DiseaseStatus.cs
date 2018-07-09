@@ -21,6 +21,6 @@ namespace DataAccessLayer.Entities
         public string Code { get; set; }
         public string Description { get; set; }
 
-        public ICollection<Disease> Disease { get; set; }
+        public virtual ICollection<Disease> Disease { get; set; }
     }
 }
