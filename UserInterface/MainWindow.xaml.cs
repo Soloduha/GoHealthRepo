@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Collections.ObjectModel;
 using BLL;
+using BLL.DTO;
 
 namespace UserInterface
 {
@@ -32,14 +33,13 @@ namespace UserInterface
         Grid currentGrid;
         //public ObservableCollection<TestClass> myCollection;
         //public List<Pat> patients;
-        public List<DoctorDTO> doctors;
+        public List<PatientDTO> patients;
         public MainWindow()
         {
             InitializeComponent();
-            
             currentGrid = new Grid();           //to simplify controlling grids
             DateOfReception.BlackoutDates.AddDatesInPast();
-            doctors = new List<DoctorDTO>(TestClass.GetSomeDoctors());
+            patients = new List<PatientDTO>(TestClass.GetSomePatients());
             //patients = new List<Pat>();
             GridLogSign.Visibility = Visibility.Visible;
 
@@ -55,7 +55,7 @@ namespace UserInterface
             //patients.Add(new Pat() { Name = "Vlad2", Surname = "hakunaMatata", ThirdName = "Valentinovich2" });
             //patients.Add(new Pat() { Name = "Vlad3", Surname = "lion", ThirdName = "Valentinovich" });
             //patients.Add(new Pat() { Name = "Vlad4", Surname = "strikalo", ThirdName = "Valentinovich" });
-            SurnamesComboBox.ItemsSource = doctors;
+            SurnamesComboBox.ItemsSource = patients;
 
 
             //DoctorsR.ItemsSource = patients;
@@ -139,8 +139,8 @@ namespace UserInterface
         private void SurnamesComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             //if patient exists in database, textboxes below will be filled with his/her data 
-            Pat p = new Pat();
-            p = SurnamesComboBox.SelectedItem as Pat;
+            PatientDTO p;
+            p = SurnamesComboBox.SelectedItem as PatientDTO;
             if (p != null)
             {
                 NewReceptionNameTextBox.Text = p.Name;

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BLL.DTO
 {
-    public class WorkDayDTO
+    public class WorkDayDTO : BaseDTO.BaseModelDTO
     {
         public DateTime StartDate { get; set; }
 
