@@ -203,5 +203,11 @@ namespace UserInterface
             currentGrid.Tag = ProfileScheduleGrid;
             (currentGrid.Tag as Grid).Visibility = Visibility.Visible;
         }
+
+        private void DoctorsComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //(DoctorsComboBox.SelectedItem as DoctorDTO).WorkDay
+            //DoctorScheduleListView.ItemsSource = ;
+        }
     }
 }

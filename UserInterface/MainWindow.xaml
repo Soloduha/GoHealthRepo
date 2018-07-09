@@ -310,7 +310,8 @@
                     <RowDefinition></RowDefinition>
                     <RowDefinition Height="40"></RowDefinition>
                 </Grid.RowDefinitions>
-                <ListView x:Name="MondayListView" Grid.Column="1" Grid.Row="1" Margin="5">
+                <GroupBox Grid.Column="1" Grid.Row="1" Header="Понеділок">
+                <ListView x:Name="MondayListView" >
                     <ListView.View>
                         <GridView x:Name="GridViewMonday">
                             <GridViewColumn Header="Ім`я" Width="92">
@@ -352,7 +353,9 @@
                         </GridView>
                     </ListView.View>
                 </ListView>
-                <ListView x:Name="TuesdayListView" Grid.Column="2" Grid.Row="1" Margin="5">
+                </GroupBox>
+                <GroupBox Grid.Column="2" Grid.Row="1" Header="Вівторок">
+                <ListView x:Name="TuesdayListView" >
                     <ListView.View>
                         <GridView x:Name="GridViewTuesday">
                             <GridViewColumn Header="Ім`я" Width="92">
@@ -394,7 +397,9 @@
                         </GridView>
                     </ListView.View>
                 </ListView>
-                <ListView x:Name="WednesdayListView" Grid.Column="3" Grid.Row="1" Margin="5">
+                </GroupBox>
+                <GroupBox Grid.Column="3" Grid.Row="1" Header="Середа">
+                <ListView x:Name="WednesdayListView" >
                     <ListView.View>
                         <GridView x:Name="GridViewWednesday">
                             <GridViewColumn Header="Ім`я" Width="92">
@@ -436,7 +441,9 @@
                         </GridView>
                     </ListView.View>
                 </ListView>
-                <ListView x:Name="ThursdayListView" Grid.Column="1" Grid.Row="2" Margin="5">
+                </GroupBox>
+                <GroupBox Grid.Column="1" Grid.Row="2" Header="Четвер">
+                <ListView x:Name="ThursdayListView" >
                     <ListView.View>
                         <GridView x:Name="GridViewThursday">
                             <GridViewColumn Header="Ім`я" Width="92">
@@ -478,7 +485,9 @@
                         </GridView>
                     </ListView.View>
                 </ListView>
-                <ListView x:Name="FridayListView" Grid.Column="2" Grid.Row="2" Margin="5">
+                </GroupBox>
+                <GroupBox Grid.Column="2" Grid.Row="2" Header="П`ятниця">
+                <ListView x:Name="FridayListView" >
                     <ListView.View>
                         <GridView x:Name="GridViewFriday">
                             <GridViewColumn Header="Ім`я" Width="92">
@@ -520,7 +529,9 @@
                         </GridView>
                     </ListView.View>
                 </ListView>
-                <ListView x:Name="SaturdayListView" Grid.Column="3" Grid.Row="2" Margin="5">
+                </GroupBox>
+                <GroupBox Grid.Column="3" Grid.Row="2" Header="Субота">
+                <ListView x:Name="SaturdayListView" >
                     <ListView.View>
                         <GridView x:Name="GridViewSaturday">
                             <GridViewColumn Header="Ім`я" Width="92">
@@ -563,6 +574,7 @@
                         </GridView>
                     </ListView.View>
                 </ListView>
+                </GroupBox>
                 <Grid Grid.Column="3" Grid.Row="3">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition></ColumnDefinition>
@@ -587,7 +599,7 @@
                     </Button>
                 </Grid>
             </Grid>
-            <Grid x:Name="NewReceptionGrid" Visibility="Collapsed" Grid.Row="1" Background="AliceBlue">
+            <Grid x:Name="NewReceptionGrid" Visibility="Visible" Grid.Row="1" Background="AliceBlue">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="100"></ColumnDefinition>
                     <ColumnDefinition Width="45"/>
@@ -660,11 +672,12 @@
                           Grid.Column="2" Grid.Row="5"
                           Background="White" BorderBrush="Black"
                           Height="35" Width="200"
-                          HorizontalAlignment="Left" ></ComboBox>
+                          HorizontalAlignment="Left"
+                          SelectionChanged="DoctorsComboBox_SelectionChanged"></ComboBox>
                 <DatePicker x:Name="DateOfReception" Grid.Column="2" Grid.Row="6"
                             VerticalAlignment="Center" Width="200"
                             HorizontalAlignment="Left" />
-                <ListView Grid.Column="3" Grid.ColumnSpan="2"
+                <ListView x:Name="DoctorScheduleListView" Grid.Column="3" Grid.ColumnSpan="2"
                           Grid.Row="1" Grid.RowSpan="5" Margin="30">
                     <ListView.View>
                         <GridView>
@@ -722,7 +735,7 @@
                     </ListView.View>
                 </ListView>
             </Grid>
-            <Grid x:Name="ProfileDoctorGrid" Grid.Row="1" Visibility="Visible">
+            <Grid x:Name="ProfileDoctorGrid" Grid.Row="1" Visibility="Collapsed">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="110"></RowDefinition>
                     <RowDefinition Height="40"></RowDefinition>
