@@ -84,11 +84,10 @@
     </None>
     <None Include="DataAccessLayer\obj\Debug\DataAccessLayer.csproj.CoreCompileInputs.cache" />
     <None Include="DataAccessLayer\obj\Debug\DataAccessLayer.csprojAssemblyReference.cache" />
-    <None Include="obj\Debug\DataAccessLayer.csproj.CoreCompileInputs.cache" />
-    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="bin\Debug\" />
     <Folder Include="bin\Release\" />
     <Folder Include="DataAccessLayer\bin\Debug\" />
     <Folder Include="DataAccessLayer\obj\Debug\TempPE\" />
