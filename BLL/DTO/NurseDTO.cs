@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BLL.DTO
 {
-    public class NurseDTO
+    public class NurseDTO : BaseDTO.BaseModelDTO
     {
         public string Name { get; set; }
         public string SecondName { get; set; }

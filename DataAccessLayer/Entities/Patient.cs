@@ -21,9 +21,9 @@ namespace DataAccessLayer.Entities
         public DateTime DateOfBirth { get; set; }
         public int DiseaseHistoryId { get; set; }
 
-        public DiseaseHistory DiseaseHistory { get; set; }
+        public virtual DiseaseHistory DiseaseHistory { get; set; }
 
-        public ICollection<Reception> Reception { get; set; }
+        public virtual ICollection<Reception> Reception { get; set; }
 
 
     }

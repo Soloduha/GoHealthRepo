@@ -28,7 +28,7 @@ namespace DataAccessLayer.Entities
         public int DepartmentId { get; set; }
 
         public Department Department { get; set; }
-        public ICollection<WorkDayDoctor> WorkDayDoctor { get; set; }
-        public ICollection<Reception> Reception { get; set; }
+        public virtual ICollection<WorkDayDoctor> WorkDayDoctor { get; set; }
+        public virtual ICollection<Reception> Reception { get; set; }
     }
 }

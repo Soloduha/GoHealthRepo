@@ -21,6 +21,6 @@ namespace DataAccessLayer.Entities
         public string Address { get; set; }
         public string Director { get; set; }
 
-        public ICollection<Doctor> Doctor { get; set; }
+        public virtual ICollection<Doctor> Doctor { get; set; }
     }
 }
