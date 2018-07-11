@@ -21,12 +21,6 @@ namespace UserInterface
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>   
-    public class Pat
-    {
-        public string Name { get; set; }
-        public string Surname { get; set; }
-        public string ThirdName { get; set; }
-    }
 
     public partial class MainWindow : Window
     {
@@ -34,12 +28,14 @@ namespace UserInterface
         //public ObservableCollection<TestClass> myCollection;
         //public List<Pat> patients;
         public List<PatientDTO> patients;
+        public List<DoctorDTO> doctors;
         public MainWindow()
         {
             InitializeComponent();
             currentGrid = new Grid();           //to simplify controlling grids
             DateOfReception.BlackoutDates.AddDatesInPast();
             patients = new List<PatientDTO>(TestClass.GetSomePatients());
+            doctors = new List<DoctorDTO>(TestClass.GetSomeDoctors());
             //patients = new List<Pat>();
             GridLogSign.Visibility = Visibility.Visible;
 
@@ -56,7 +52,7 @@ namespace UserInterface
             //patients.Add(new Pat() { Name = "Vlad3", Surname = "lion", ThirdName = "Valentinovich" });
             //patients.Add(new Pat() { Name = "Vlad4", Surname = "strikalo", ThirdName = "Valentinovich" });
             SurnamesComboBox.ItemsSource = patients;
-
+            DoctorsComboBox.ItemsSource = doctors;
 
             //DoctorsR.ItemsSource = patients;
             //DateOfReception.
@@ -206,7 +202,7 @@ namespace UserInterface
 
         private void DoctorsComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //(DoctorsComboBox.SelectedItem as DoctorDTO).WorkDay
+            //(DoctorsComboBox.SelectedItem as DoctorDTO).
             //DoctorScheduleListView.ItemsSource = ;
         }
     }

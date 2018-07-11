@@ -63,18 +63,15 @@
     <Compile Include="Entities\WorkDayDoctor.cs" />
     <Compile Include="Interfaces\IBaseEntity.cs" />
     <Compile Include="Interfaces\IDataRepository.cs" />
-    <Compile Include="Migrations\201807031311134_InitialCreate.cs" />
-    <Compile Include="Migrations\201807031311134_InitialCreate.Designer.cs">
-      <DependentUpon>201807031311134_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201807091352044_Migr1.cs" />
+    <Compile Include="Migrations\201807091352044_Migr1.Designer.cs">
+      <DependentUpon>201807091352044_Migr1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201807081132526_Migr1.cs" />
-    <Compile Include="Migrations\201807081132526_Migr1.Designer.cs">
-      <DependentUpon>201807081132526_Migr1.cs</DependentUpon>
+    <Compile Include="Migrations\201807111436113_Migr2.cs" />
+    <Compile Include="Migrations\201807111436113_Migr2.Designer.cs">
+      <DependentUpon>201807111436113_Migr2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\GHRepository.cs" />
   </ItemGroup>
@@ -94,11 +91,11 @@
     <Folder Include="obj\Debug\TempPE\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201807031311134_InitialCreate.resx">
-      <DependentUpon>201807031311134_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201807091352044_Migr1.resx">
+      <DependentUpon>201807091352044_Migr1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201807081132526_Migr1.resx">
-      <DependentUpon>201807081132526_Migr1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201807111436113_Migr2.resx">
+      <DependentUpon>201807111436113_Migr2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -15,7 +15,7 @@ namespace DataAccessLayer.Entities
         public int DoctorId { get; set; }
         public int WorkDayId { get; set; }
 
-        public Doctor Doctor { get; set; }
-        public WorkDay WorkDay { get; set; }
+        public virtual Doctor Doctor { get; set; }
+        public virtual WorkDay WorkDay { get; set; }
     }
 }

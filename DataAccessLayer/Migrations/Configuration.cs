@@ -20,7 +20,7 @@ namespace DataAccessLayer.Migrations
         protected override void Seed(DataAccessLayer.Context.MyContext _context)
         {
             context = _context;
-            
+
             FillAllTables();
             context.SaveChanges();
         }
@@ -38,6 +38,7 @@ namespace DataAccessLayer.Migrations
             FillNotes();
             FillWorkDaysDoctors();
             FillNurses();
+            FillReceptions();
         }
 
         public void FillDisStatuses()
@@ -206,5 +207,31 @@ namespace DataAccessLayer.Migrations
 
             context.SaveChanges();
         }
+
+        public void FillReceptions()
+        {
+            context.Receptions.AddRange(new List<Reception> {
+           new Reception() { DoctorId=1, NurseId = 1, PatientId = 1,
+               DateOfRegistration = new DateTime(2018, 8, 12, 11, 0,0) },
+           new Reception() { DoctorId=1, NurseId = 2, PatientId = 3,
+               DateOfRegistration = new DateTime(2018, 8, 12, 11, 30,0) },
+           new Reception() { DoctorId=2, NurseId = 3, PatientId = 3,
+               DateOfRegistration = new DateTime(2018, 8, 12, 12, 0,0) },
+           new Reception() { DoctorId=2, NurseId = 3, PatientId = 4,
+               DateOfRegistration = new DateTime(2018, 8, 12, 11, 0,0) },
+           new Reception() { DoctorId=2, NurseId = 2, PatientId = 5,
+               DateOfRegistration = new DateTime(2018, 8, 12, 13, 0,0) },
+           new Reception() { DoctorId=3, NurseId = 1, PatientId = 1,
+               DateOfRegistration = new DateTime(2018, 8, 13, 11, 0,0) },
+           new Reception() { DoctorId=4, NurseId = 2, PatientId = 2,
+               DateOfRegistration = new DateTime(2018, 8, 12, 14, 45,0) },
+           new Reception() { DoctorId=3, NurseId = 1, PatientId = 6,
+               DateOfRegistration = new DateTime(2018, 8, 12, 10, 30,0) },
+           new Reception() { DoctorId=1, NurseId = 1, PatientId = 5,
+               DateOfRegistration = new DateTime(2018, 8, 12, 11, 0,0) }
+           });
+            context.SaveChanges();
+        }
     }
 }
+
