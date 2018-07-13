@@ -21,9 +21,9 @@ namespace DataAccessLayer.Context
                 .HasOptional(s => s.DiseaseHistory) // Mark Address property optional in Student entity
                 .WithRequired(ad => ad.Patient);
 
-            modelBuilder.Entity<Note>()
-                .HasOptional(s => s.Reception) // Mark Address property optional in Student entity
-                .WithRequired(ad => ad.Note);
+            modelBuilder.Entity<Reception>()
+                .HasOptional(s => s.Note) // Mark Address property optional in Student entity
+                .WithRequired(ad => ad.Reception);
         }
 
         public virtual DbSet<Disease> Diseases { get; set; }

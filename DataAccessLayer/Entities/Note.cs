@@ -15,8 +15,8 @@ namespace DataAccessLayer.Entities
         public int DiseaseId { get; set; }
         public int DiseaseHistoryId { get; set; }
 
-        public Reception Reception { get; set; }
-        public Disease Disease { get; set; }
-        public DiseaseHistory DiseaseHistory { get; set; }
+        public virtual Reception Reception { get; set; }
+        public virtual Disease Disease { get; set; }
+        public virtual DiseaseHistory DiseaseHistory { get; set; }
     }
 }
