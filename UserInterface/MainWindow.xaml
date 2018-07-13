@@ -599,7 +599,7 @@
                     </Button>
                 </Grid>
             </Grid>
-            <Grid x:Name="NewReceptionGrid" Visibility="Visible" Grid.Row="1" Background="AliceBlue">
+            <Grid x:Name="NewReceptionGrid" Visibility="Visible" Grid.Row="1" Background="WhiteSmoke">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="100"></ColumnDefinition>
                     <ColumnDefinition Width="45"/>
@@ -609,43 +609,55 @@
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50"></RowDefinition>
-                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="20"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
+                <GroupBox Grid.Column="0" Grid.Row="1" Margin="3,0,3,0"
+                          Grid.ColumnSpan="3" Grid.RowSpan="5"
+                          Header="Пацієнт" Background="White" BorderBrush="Red">                    
+                </GroupBox>
+                <GroupBox Grid.Column="0" Grid.Row="6" Margin="3,20,3,20"
+                          Grid.ColumnSpan="3" Grid.RowSpan="5" Background="White"
+                          BorderBrush="Red" Header="Прийом"/>
                 <Label Content="Новий запис" Grid.Column="0" Grid.Row="0"
                        Grid.ColumnSpan="3" FontSize="30" FontWeight="Bold"
                        VerticalAlignment="Bottom"/>
-                <Label Content="Прізвище:  " Grid.Column="0" Grid.Row="1"
+                <Label Content="Прізвище:  " Grid.Column="0" Grid.Row="2"
                        FontSize="18" FontWeight="Bold"
                        HorizontalAlignment="Right"
                        VerticalAlignment="Center" Grid.ColumnSpan="2"/>
-                <Label Content="Ім`я:  " Grid.Column="0" Grid.Row="2"
+                <Label Content="Ім`я:  " Grid.Column="0" Grid.Row="3"
                        FontSize="18" FontWeight="Bold"
                        HorizontalAlignment="Right"
                        VerticalAlignment="Center" Grid.ColumnSpan="2" />
-                <Label Content="По-батькові:  " Grid.Column="0" Grid.Row="3"
+                <Label Content="По-батькові:  " Grid.Column="0" Grid.Row="4"
                        FontSize="18" FontWeight="Bold"
                        HorizontalAlignment="Right"
                        VerticalAlignment="Center" Grid.ColumnSpan="2" />
-                <Label Content="Дат. народ.:  " Grid.Column="0" Grid.Row="4"
+                <Label Content="Дат. народ.:  " Grid.Column="0" Grid.Row="5"
                        FontSize="18" FontWeight="Bold"
                        HorizontalAlignment="Right"
                        VerticalAlignment="Center" Grid.ColumnSpan="2" />
-                <Label Content="Лікар:  " Grid.Column="0" Grid.Row="5"
+                <Label Content="Лікар:  " Grid.Column="0" Grid.Row="7"
                        FontSize="18" FontWeight="Bold"
                        HorizontalAlignment="Right"
                        VerticalAlignment="Center" Grid.ColumnSpan="2"/>
-                <Label Content="Дата прийому:  " Grid.Column="0" Grid.Row="6"
+                <Label Content="Дата:  " Grid.Column="0" Grid.Row="8"
                        FontSize="18" FontWeight="Bold"
                        HorizontalAlignment="Right"
                        VerticalAlignment="Center" Grid.ColumnSpan="2"/>
                 <ComboBox x:Name="SurnamesComboBox" IsTextSearchEnabled="True"
-                          Grid.Column="2" Grid.Row="1" Width="200"
-                          Height="35" Background="White" HorizontalAlignment="Left"
+                          Grid.Column="2" Grid.Row="2" Width="200"
+                          Height="30" Background="White" HorizontalAlignment="Left"
                           IsEditable="True" VerticalContentAlignment="Center"
                           TextSearch.TextPath="Surname" SelectionChanged="SurnamesComboBox_SelectionChanged">
                     <ComboBox.ItemTemplate>
@@ -658,46 +670,53 @@
                         </DataTemplate>
                     </ComboBox.ItemTemplate>
                 </ComboBox>
-                <TextBox x:Name="NewReceptionNameTextBox" Grid.Column="2" Grid.Row="2"
-                         Height="35" Width="200" HorizontalAlignment="Left" FontSize="20"
+                <TextBox x:Name="NewReceptionNameTextBox" Grid.Column="2" Grid.Row="3"
+                         Height="30" Width="200" HorizontalAlignment="Left" FontSize="20"
                          VerticalContentAlignment="Center"/>
-                <TextBox x:Name="NewReceptionPoBatkoviTextBox" Grid.Column="2" Grid.Row="3"
-                         Height="35" Width="200" HorizontalAlignment="Left" FontSize="20"
+                <TextBox x:Name="NewReceptionPoBatkoviTextBox" Grid.Column="2" Grid.Row="4"
+                         Height="30" Width="200" HorizontalAlignment="Left" FontSize="20"
                          VerticalContentAlignment="Center"/>
-                <DatePicker x:Name="BirthDayOfPatient" Grid.Column="2" Grid.Row="4"
+                <DatePicker x:Name="BirthDayOfPatient" Grid.Column="2" Grid.Row="5"
                             VerticalAlignment="Center" Width="200"
                             HorizontalAlignment="Left" >
-                </DatePicker>                      
+                </DatePicker>
+                <Label Content="Час:  " Grid.Column="0" Grid.Row="9"
+                       FontSize="18" FontWeight="Bold"
+                       HorizontalAlignment="Right"
+                       VerticalAlignment="Center" Grid.ColumnSpan="2"/>
+                <TextBox x:Name="TimeOfReceptionTextBox" Grid.Column="2" Grid.Row="9"
+                         Height="35" Width="200" HorizontalAlignment="Left" FontSize="20"
+                         VerticalContentAlignment="Center"/>
                 <ComboBox x:Name="DoctorsComboBox"
-                          Grid.Column="2" Grid.Row="5"
+                          Grid.Column="2" Grid.Row="7"
                           Background="White" BorderBrush="Black"
                           Height="35" Width="200"
                           HorizontalAlignment="Left"
                           SelectionChanged="DoctorsComboBox_SelectionChanged"></ComboBox>
-                <DatePicker x:Name="DateOfReception" Grid.Column="2" Grid.Row="6"
+                <DatePicker x:Name="DateOfReception" Grid.Column="2" Grid.Row="8"
                             VerticalAlignment="Center" Width="200"
                             HorizontalAlignment="Left" />
+                
                 <ListView x:Name="DoctorScheduleListView" Grid.Column="3" Grid.ColumnSpan="2"
-                          Grid.Row="1" Grid.RowSpan="5" Margin="30">
+                          Grid.Row="1" Grid.RowSpan="7" Margin="30">
                     <ListView.View>
                         <GridView>
-                            <GridViewColumn Header="Поч."/>
-                            <GridViewColumn Header="Кін."/>
-                            <GridViewColumn Header="Пацієнт" Width="230"/>
+                            <GridViewColumn Header="Поч." Width="50"/>
+                            <GridViewColumn Header="Кін." Width="50"/>
+                            <GridViewColumn Header="Пацієнт" Width="180"/>
                         </GridView>
                     </ListView.View>
                 </ListView>
                 <Button x:Name="OkNewReceptionButton"
                         Content="Добавити"
-                        Grid.Column="3" Grid.Row="6"
+                        Grid.Column="3" Grid.Row="9"
                         Background="White"
                         Height="30"
                         Width="90"
                         Click="OkNewReceptionButton_Click"/>
                 <Button x:Name="ClearAllFieldsButton"
                         Content="Очистити"
-                        Grid.Column="4"
-                        Grid.Row="6"
+                        Grid.Column="4" Grid.Row="9"
                         Background="White"
                         Height="30"
                         Width="90"

@@ -55,13 +55,7 @@ namespace UserInterface
             //patients.Add(new Pat() { Name = "Vlad2", Surname = "hakunaMatata", ThirdName = "Valentinovich2" });
             //patients.Add(new Pat() { Name = "Vlad3", Surname = "lion", ThirdName = "Valentinovich" });
             //patients.Add(new Pat() { Name = "Vlad4", Surname = "strikalo", ThirdName = "Valentinovich" });
-            SurnamesComboBox.ItemsSource = patients;
-
-
-            //DoctorsR.ItemsSource = patients;
-            //DateOfReception.
-
-            DateOfReception.BlackoutDates.AddDatesInPast();
+            SurnamesComboBox.ItemsSource = patients;            
         }
 
         private void NextWeekButton_IsMouseCapturedChanged(object sender, DependencyPropertyChangedEventArgs e)
