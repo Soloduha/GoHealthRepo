@@ -15,7 +15,7 @@ namespace DataAccessLayer.Entities
         public DateTime DateOfRegistration { get; set; }
         public int DoctorId { get; set; }
         public int PatientId { get; set; }
-        public int NoteId { get; set; }
+        public int? NoteId { get; set; }
         public int NurseId { get; set; }
 
         public virtual Doctor Doctor { get; set; }

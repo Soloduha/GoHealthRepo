@@ -35,10 +35,11 @@ namespace DataAccessLayer.Migrations
 
             FillPatients();
             //FillDisHistories();
-            FillNotes();
+            FillReceptions();
+           // FillNotes();
             FillWorkDaysDoctors();
             FillNurses();
-            FillReceptions();
+            
         }
 
         public void FillDisStatuses()
@@ -131,13 +132,13 @@ namespace DataAccessLayer.Migrations
         public void FillNotes()
         {
             context.Notes.AddRange(new List<Note> {
-                new Note() {Medicine="Some medicines", DiseaseId=1,DiseaseHistoryId=1},
-                new Note() {Medicine="Some medicines", DiseaseId=3,DiseaseHistoryId=2},
-                new Note() {Medicine="Some medicines", DiseaseId=4,DiseaseHistoryId=3},
-                new Note() {Medicine="Some medicines", DiseaseId=7,DiseaseHistoryId=4},
-                new Note() {Medicine="Some medicines", DiseaseId=6,DiseaseHistoryId=5},
-                new Note() {Medicine="Some medicines", DiseaseId=5,DiseaseHistoryId=6},
-                new Note() {Medicine="Some medicines", DiseaseId=2,DiseaseHistoryId=7}
+                new Note() {Medicine="Some medicines", DiseaseId=1,ReceptionId=1},
+                new Note() {Medicine="Some medicines", DiseaseId=3,ReceptionId=2},
+                new Note() {Medicine="Some medicines", DiseaseId=4,ReceptionId=3},
+                new Note() {Medicine="Some medicines", DiseaseId=7,ReceptionId=4},
+                new Note() {Medicine="Some medicines", DiseaseId=6,ReceptionId=5},
+                new Note() {Medicine="Some medicines", DiseaseId=5,ReceptionId=6},
+                new Note() {Medicine="Some medicines", DiseaseId=2,ReceptionId=7}
             });
 
             context.SaveChanges();
