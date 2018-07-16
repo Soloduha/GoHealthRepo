@@ -21,6 +21,12 @@ namespace UserInterface
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>   
+    public class Pat
+    {
+        public string Name { get; set; }
+        public string Surname { get; set; }
+        public string ThirdName { get; set; }
+    }
 
     public partial class MainWindow : Window
     {
@@ -34,11 +40,16 @@ namespace UserInterface
             InitializeComponent();
             currentGrid = new Grid();           //to simplify controlling grids
             DateOfReception.BlackoutDates.AddDatesInPast();
-            patients = new List<PatientDTO>(TestClass.GetSomePatients());
-            doctors = new List<DoctorDTO>(TestClass.GetSomeDoctors());
-            //patients = new List<Pat>();
+            
             GridLogSign.Visibility = Visibility.Visible;
 
+            patients = new List<PatientDTO>(TestClass.GetSomePatients());
+            SurnamesComboBox.ItemsSource = patients;
+            doctors = new List<DoctorDTO>(TestClass.GetSomeDoctors());
+            DoctorsComboBox.ItemsSource = doctors;
+            DoctorsReceptionsComboBox.ItemsSource = doctors;
+
+            #region
             //myCollection = new ObservableCollection<TestClass>();
             //myCollection.Add(new TestClass() { Name = "Vlad", StartDate = DateTime.Now, EndDate = DateTime.Now});
             //myCollection.Add(new TestClass() { Name = "Oleh", StartDate = DateTime.Now, EndDate = DateTime.Now });
@@ -51,13 +62,7 @@ namespace UserInterface
             //patients.Add(new Pat() { Name = "Vlad2", Surname = "hakunaMatata", ThirdName = "Valentinovich2" });
             //patients.Add(new Pat() { Name = "Vlad3", Surname = "lion", ThirdName = "Valentinovich" });
             //patients.Add(new Pat() { Name = "Vlad4", Surname = "strikalo", ThirdName = "Valentinovich" });
-            SurnamesComboBox.ItemsSource = patients;
-            DoctorsComboBox.ItemsSource = doctors;
-
-            //DoctorsR.ItemsSource = patients;
-            //DateOfReception.
-
-            DateOfReception.BlackoutDates.AddDatesInPast();
+            #endregion           
         }
 
         private void NextWeekButton_IsMouseCapturedChanged(object sender, DependencyPropertyChangedEventArgs e)
@@ -85,6 +90,7 @@ namespace UserInterface
         private void OkRegister_Click(object sender, RoutedEventArgs e)
         {
             //перевірка на введені дані
+
             //добавлення в базу нового користувача
             RegisterGrid.Visibility = Visibility.Collapsed;
             FunctionalGrid.Visibility = Visibility.Visible;
@@ -202,8 +208,27 @@ namespace UserInterface
 
         private void DoctorsComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //(DoctorsComboBox.SelectedItem as DoctorDTO).
+            //(DoctorsComboBox.SelectedItem as DoctorDTO).WorkDay
             //DoctorScheduleListView.ItemsSource = ;
+        }
+
+        private void ExitMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            FunctionalGrid.Visibility = Visibility.Collapsed;
+            GridLogSign.Visibility = Visibility.Visible;
+        }
+
+        private void DoctorReceptionsButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DoctorsReceptionsComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var temp = DoctorsReceptionsComboBox.SelectedItem as DoctorDTO;
+            if (temp != null)
+                DoctorsReceptionsComboBox.Text = temp.Surname;
+                    //temp.Surname + " " + temp.Name + " " + temp.ThirdName;
         }
     }
 }

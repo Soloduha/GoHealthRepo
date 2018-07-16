@@ -7,6 +7,29 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="550" Width="800" ResizeMode="NoResize" Left="130" Top="90">
     <Window.Resources>
+        <Style x:Key="AllButtonsStyle" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Width" Value="150"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="Black"
+                                BorderThickness="1">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="Background" Value="WhiteSmoke"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
         <Style x:Key="PropertyTriggerStyle"
                TargetType="Button">
             <Setter Property="Background" Value="Transparent"/>
@@ -33,7 +56,7 @@
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="FontSize" Value="23"/>
             <Setter Property="Foreground" Value="White"/>
-            <Setter Property="Background" Value="Red"/>
+            <Setter Property="Background" Value="Transparent"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">                        
@@ -47,39 +70,63 @@
             </Setter>
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="true">
-                    <Setter Property="Background" Value="OrangeRed"/>
+                    <Setter Property="Opacity" Value="0.8"/>
                 </Trigger>
             </Style.Triggers>
         </Style>
     </Window.Resources>
     <Grid x:Name="MainGrid">
-        <Grid x:Name="GridLogSign" Visibility="Collapsed" Background="AliceBlue">
+        <Grid x:Name="GridLogSign" Visibility="Collapsed">
             <Grid.RowDefinitions>
                 <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0"
+                   Grid.Row="0"   
+                   VerticalContentAlignment="Center"
+                   HorizontalContentAlignment="Center">
+                <StackPanel>
+                    <TextBlock Text="GoHealth"                 
+                               FontSize="38"
+                               FontWeight="Bold"
+                               HorizontalAlignment="Center"
+                               Foreground="DarkSlateGray"/>
+                    <TextBlock Text="Здоров`я для всієї родини"
+                               FontWeight="Bold"
+                               FontSize="24"
+                               Foreground="SlateGray"/>
+                </StackPanel>
+            </Label>
+            
             <Button x:Name="Register"
-                    Grid.Row="1"
-                    Height="40"
-                    Width="150"
+                    Grid.Row="2"
+                    Style="{StaticResource ResourceKey=AllButtonsStyle}"
                     Content="Реєстрація"
                     Click="Register_Click"/>
             <Button x:Name="SignIn"
-                    Grid.Row="2"
-                    Height="40"
-                    Width="150"
+                    Grid.Row="3"
+                    Style="{StaticResource ResourceKey=AllButtonsStyle}"
                     Content="Ввійти"
                     Click="SignIn_Click"/>
+            <Grid.Background>
+                <ImageBrush ImageSource="Images/Doctor.jpg" Stretch="UniformToFill"/>
+            </Grid.Background>
         </Grid>
-        <Grid x:Name="RegisterGrid" Visibility="Collapsed" Background="AliceBlue">
+        <Grid x:Name="RegisterGrid" Visibility="Collapsed">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="200"></ColumnDefinition>
+                <ColumnDefinition Width="150"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition></RowDefinition>
+                <RowDefinition Height="150"></RowDefinition>
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
@@ -87,60 +134,77 @@
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
+            <Grid.Background>
+                <ImageBrush ImageSource="Images/Doctor.jpg" Stretch="UniformToFill"/>
+            </Grid.Background>
             <Label Grid.Column="0"
-                   Grid.Row="0"                   
+                   Grid.Row="0"
                    Grid.ColumnSpan="2"
-                   Height="40"
-                   Width="100"
+                   FontWeight="Bold"
                    VerticalContentAlignment="Center"
                    HorizontalContentAlignment="Center"
-                   FontSize="18"
+                   FontSize="28"
+                   Foreground="DarkSlateGray"
                    Content="Реєстрація"/>
             <Label Content="Ім`я: "
                    Grid.Column="0"
                    Grid.Row="1"
+                   FontWeight="Bold"
                    HorizontalAlignment="Right"
                    HorizontalContentAlignment="Right"
                    VerticalContentAlignment="Center"
                    VerticalAlignment="Center"
+                   Foreground="DarkSlateGray"
                    Height="40"
                    Width="100"/>
             <Label Content="Призвіще: "
                    Grid.Column="0"
                    Grid.Row="2"
+                   FontWeight="Bold"
                    HorizontalAlignment="Right"
                    HorizontalContentAlignment="Right"
                    VerticalContentAlignment="Center"
                    VerticalAlignment="Center"
+                   Foreground="DarkSlateGray"
                    Height="40"
                    Width="100"/>
             <Label Content="По-батькові: "
                    Grid.Column="0"
                    Grid.Row="3"
+                   FontWeight="Bold"
                    HorizontalAlignment="Right"
                    HorizontalContentAlignment="Right"
                    VerticalContentAlignment="Center"
                    VerticalAlignment="Center"
+                   Foreground="DarkSlateGray"
                    Height="40"
                    Width="100"/>
             <Label Content="Моб. тел.: "
                    Grid.Column="0"
                    Grid.Row="4"
+                   FontWeight="Bold"
                    HorizontalAlignment="Right"
                    HorizontalContentAlignment="Right"
                    VerticalContentAlignment="Center"
                    VerticalAlignment="Center"
+                   Foreground="DarkSlateGray"
                    Height="40"
                    Width="100"/>
             <TextBox x:Name="RegisterNameTextBox"
                      Grid.Column="1"
                      Grid.Row="1"
+                     Opacity="0.5"
+                     FontSize="18"
+                     VerticalContentAlignment="Center"
                      Width="200"
                      Height="30"
                      HorizontalAlignment="Left"
                      Margin="5,0,0,0"/>
             <TextBox x:Name="RegisterLastNameTextBox"
                      Grid.Column="1"
+                     Opacity="0.5"
+                     FontSize="18"
+                     VerticalContentAlignment="Center"
                      Grid.Row="2"
                      Width="200"
                      Height="30"
@@ -148,6 +212,9 @@
                      Margin="5,0,0,0"/>
             <TextBox x:Name="RegisterPoBatkoviTextBox"
                      Grid.Column="1"
+                     Opacity="0.5"
+                     FontSize="18"
+                     VerticalContentAlignment="Center"
                      Grid.Row="3"
                      Width="200"
                      Height="30"
@@ -157,12 +224,17 @@
                      Grid.Column="1"
                      Grid.Row="4"
                      Width="200"
+                     Opacity="0.5"
+                     FontSize="18"
+                     VerticalContentAlignment="Center"
                      Height="30"
                      HorizontalAlignment="Left"
                      Margin="5,0,0,0"/>
             <Label Content="Пароль: "
                    Grid.Column="0"
                    Grid.Row="5"
+                   Foreground="DarkSlateGray"
+                   FontWeight="Bold"
                    HorizontalAlignment="Right"
                    HorizontalContentAlignment="Right"
                    VerticalContentAlignment="Center"
@@ -172,11 +244,14 @@
             <TextBox x:Name="RegisterPasswordTextBox"
                      Grid.Column="1"
                      Grid.Row="5"
+                     Opacity="0.5"
+                     FontSize="18"
+                     VerticalContentAlignment="Center"
                      Width="200"
                      Height="30"
                      HorizontalAlignment="Left"
                      Margin="5,0,0,0"/>
-            <Grid Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="6">
+            <Grid Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="6">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
@@ -184,35 +259,36 @@
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <RadioButton x:Name="NurseRadioButton"
-                         Grid.Column="0"
-                         Content="Медсестра"
-                         HorizontalAlignment="Center"
-                         VerticalAlignment="Center"></RadioButton>
+                             Grid.Column="0"
+                             Content="Медсестра"
+                             Foreground="DarkSlateGray"
+                             FontWeight="Bold"
+                             HorizontalAlignment="Center"
+                             VerticalAlignment="Center"></RadioButton>
                 <RadioButton x:Name="DoctorRadioButton"
-                         Grid.Column="1"
-                         Margin="10"
-                         Content="Лікар"
-                         HorizontalAlignment="Center"
-                         VerticalAlignment="Center"></RadioButton>
+                             Grid.Column="1"
+                             Margin="10"
+                             FontWeight="Bold"
+                             Foreground="DarkSlateGray"
+                             Content="Лікар"
+                             HorizontalAlignment="Center"
+                             VerticalAlignment="Center"></RadioButton>
                 <Button x:Name="OkRegister"
                         Grid.Column="2"
-                        Width="80"
-                        Height="30"
-                        Content="OK"
+                        Style="{StaticResource AllButtonsStyle}"
+                        Content="Далі"
                         FontSize="18"
                         Click="OkRegister_Click"></Button>
                 <Button x:Name="CancelRegister"
                         Grid.Column="3"
-                        Width="80"
-                        Height="30"
-                        Content="Cancel"
+                        Style="{StaticResource AllButtonsStyle}"
+                        Content="Назад"
                         FontSize="18"
                         Click="CancelRegister_Click"></Button>
             </Grid>
         </Grid>
-        <Grid x:Name="GridSignIn" Visibility="Collapsed" Background="AliceBlue">
+        <Grid x:Name="GridSignIn" Visibility="Collapsed">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="80"></ColumnDefinition>
                 <ColumnDefinition Width="200"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
@@ -225,78 +301,105 @@
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
+            <Grid.Background>
+                <ImageBrush ImageSource="Images/Doctor.jpg" Stretch="UniformToFill"/>
+            </Grid.Background>
             <Label Content="Вхід"
-                   Grid.Column="1"
-                   Grid.ColumnSpan="2"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"                   
                    Grid.Row="1"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"
-                   FontSize="30"
+                   FontSize="38"
+                   Foreground="DarkSlateGray"
                    FontWeight="Bold">
             </Label>
             <Label Content="Призвіще: "
-                   Grid.Column="1"
+                   Grid.Column="0"
                    Grid.Row="2"
+                   Foreground="DarkSlateGray"
+                   FontWeight="Bold"
                    HorizontalAlignment="Right"
                    VerticalAlignment="Center"
                    FontSize="20"></Label>
             <Label Content="Пароль: "
-                   Grid.Column="1"
+                   Grid.Column="0"
                    Grid.Row="3"
+                   Foreground="DarkSlateGray"
+                   FontWeight="Bold"
                    HorizontalAlignment="Right"
                    VerticalAlignment="Center"
                    FontSize="20"></Label>
             <TextBox x:Name="SignInSurnameTextBox"
-                     Grid.Column="2"
-                     Grid.ColumnSpan="2"
+                     Grid.Column="1"
+                     Opacity="0.5"
+                     FontSize="18"
+                     VerticalContentAlignment="Center"
                      Grid.Row="2"
                      Height="40"
                      Width="200"></TextBox>
             <TextBox x:Name="SignInPasswordTextBox"
-                     Grid.Column="2"
-                     Grid.ColumnSpan="2"
+                     Grid.Column="1"
+                     Opacity="0.5"
+                     FontSize="18"
+                     VerticalContentAlignment="Center"
                      Grid.Row="3"
                      Height="40"
                      Width="200"></TextBox>
             <Button x:Name="OkSign"
-                    Width="80"
-                    Height="40"
-                    Content="OK"
+                    Content="Далі"
+                    Style="{StaticResource AllButtonsStyle}"
                     Grid.Column="1"
-                    Grid.Row="4"
-                    FontSize="20"
+                    Grid.Row="5"                    
                     Click="OkSign_Click"></Button>
             <Button x:Name="SignInCancelButton"
-                    Width="80"
-                    Height="40"
-                    Content="Cancel"
+                    Style="{StaticResource AllButtonsStyle}"
+                    Content="Назад"
                     Grid.ColumnSpan="2"
                     Grid.Column="2"                    
-                    Grid.Row="4"
-                    FontSize="20"
+                    Grid.Row="5"
                     Click="SignInCancelButton_Click"></Button>
         </Grid>
-        <Grid x:Name="FunctionalGrid" Visibility="Visible">
+        <Grid x:Name="FunctionalGrid" Visibility="Collapsed">
+            <Grid.Background>
+                <ImageBrush ImageSource="Images/Doctor2.jpg" Stretch="UniformToFill"/>
+            </Grid.Background>
             <Grid.RowDefinitions>
-                <RowDefinition Height="25"></RowDefinition>
+                <RowDefinition Height="20"></RowDefinition>
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
-            <Menu Grid.Row="0" Background="White">
+            <Menu Grid.Row="0">
+                <Menu.Background>
+                    <SolidColorBrush Opacity="0.3" Color="White"/>
+                </Menu.Background>
                 <MenuItem x:Name="ProfileMenuItem"
                           Header="Профіль"
+                          Foreground="DarkSlateGray"
+                          FontWeight="Bold"
                           Click="ProfileMenuItem_Click"/>
                 <MenuItem x:Name="ScheduleMenuItem"
                           Header="Розклад лікарів"
+                          Foreground="DarkSlateGray"
+                          FontWeight="Bold"
                           Click="ScheduleMenuItem_Click"></MenuItem>
                 <MenuItem x:Name="NewReceptionMenuItem"
                           Header="Новий прийом"
+                          Foreground="DarkSlateGray"
+                          FontWeight="Bold"
                           Click="ReceptionMenuItem_Click_1"/>
                 <MenuItem x:Name="ViewReceptions"
-                          Header="Перегляд усіх"
-                          Click="ViewReceptions_Click"/>  
+                          Header="Перегляд усіх прийомів"
+                          Foreground="DarkSlateGray"
+                          FontWeight="Bold"
+                          Click="ViewReceptions_Click"/>
+                <MenuItem x:Name="ExitMenuItem"
+                          Header="Вихід"
+                          Foreground="DarkSlateGray"
+                          FontWeight="Bold"
+                          Click="ExitMenuItem_Click"/>
             </Menu>
             <Grid x:Name="CurrentWeekGrid" Visibility="Collapsed"
-                  Grid.Row="1" Background="AliceBlue">
+                  Grid.Row="1">                
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="15"></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
@@ -311,52 +414,58 @@
                     <RowDefinition Height="40"></RowDefinition>
                 </Grid.RowDefinitions>
                 <GroupBox Grid.Column="1" Grid.Row="1" Header="Понеділок">
-                <ListView x:Name="MondayListView" >
-                    <ListView.View>
-                        <GridView x:Name="GridViewMonday">
-                            <GridViewColumn Header="Ім`я" Width="92">
-                                <GridViewColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <TextBox Text="{Binding Name}" IsEnabled="True" BorderBrush="Transparent"/>
-                                    </DataTemplate>
-                                </GridViewColumn.CellTemplate>
-                            </GridViewColumn>
-                            <GridViewColumn Width="50" Header="Поч.">
-                                <GridViewColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <TextBox Text="{Binding StartDate, StringFormat={}{0:HH:MM}}" IsEnabled="False" />
-                                    </DataTemplate>
-                                </GridViewColumn.CellTemplate>
-                            </GridViewColumn >
-                            <GridViewColumn Width="50" Header="Кін.">
-                                <GridViewColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <TextBox Text="{Binding EndDate, StringFormat={}{0:HH:MM}}" IsEnabled="False"/>
-                                    </DataTemplate>
-                                </GridViewColumn.CellTemplate>
-                            </GridViewColumn>
-                            <GridViewColumn Header="Видал.">
-                                <GridViewColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <Button x:Name="DeleteDoctorButton"
-                                                Visibility="Visible" 
-                                                Width="20" 
-                                                Height="20"
-                                                HorizontalAlignment="Right"
-                                                CommandParameter="{Binding}"
-                                                Style="{StaticResource PropertyTriggerStyle}">
-                                            <ImageBrush ImageSource="Images/delete.png"></ImageBrush>
-                                        </Button>
-                                    </DataTemplate>
-                                </GridViewColumn.CellTemplate>
-                            </GridViewColumn>
-                        </GridView>
-                    </ListView.View>
-                </ListView>
+                    <ListView x:Name="MondayListView">
+                        <ListView.Background>
+                            <SolidColorBrush Color="White" Opacity="0.8"/>
+                        </ListView.Background>
+                        <ListView.View>
+                            <GridView x:Name="GridViewMonday">
+                                <GridViewColumn Header="Ім`я" Width="92">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBox Text="{Binding Name}" IsEnabled="True" BorderBrush="Transparent"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Width="50" Header="Поч.">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBox Text="{Binding StartDate, StringFormat={}{0:HH:MM}}" IsEnabled="False" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn >
+                                <GridViewColumn Width="50" Header="Кін.">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBox Text="{Binding EndDate, StringFormat={}{0:HH:MM}}" IsEnabled="False"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="Видал.">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button x:Name="DeleteDoctorButton"
+                                                    Visibility="Visible" 
+                                                    Width="20" 
+                                                    Height="20"
+                                                    HorizontalAlignment="Right"
+                                                    CommandParameter="{Binding}"
+                                                    Style="{StaticResource PropertyTriggerStyle}">
+                                                <ImageBrush ImageSource="Images/delete.png"></ImageBrush>
+                                            </Button>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
                 </GroupBox>
                 <GroupBox Grid.Column="2" Grid.Row="1" Header="Вівторок">
                 <ListView x:Name="TuesdayListView" >
-                    <ListView.View>
+                        <ListView.Background>
+                            <SolidColorBrush Color="White" Opacity="0.8"/>
+                        </ListView.Background>
+                        <ListView.View>
                         <GridView x:Name="GridViewTuesday">
                             <GridViewColumn Header="Ім`я" Width="92">
                                 <GridViewColumn.CellTemplate>
@@ -400,7 +509,10 @@
                 </GroupBox>
                 <GroupBox Grid.Column="3" Grid.Row="1" Header="Середа">
                 <ListView x:Name="WednesdayListView" >
-                    <ListView.View>
+                        <ListView.Background>
+                            <SolidColorBrush Color="White" Opacity="0.8"/>
+                        </ListView.Background>
+                        <ListView.View>
                         <GridView x:Name="GridViewWednesday">
                             <GridViewColumn Header="Ім`я" Width="92">
                                 <GridViewColumn.CellTemplate>
@@ -444,7 +556,10 @@
                 </GroupBox>
                 <GroupBox Grid.Column="1" Grid.Row="2" Header="Четвер">
                 <ListView x:Name="ThursdayListView" >
-                    <ListView.View>
+                        <ListView.Background>
+                            <SolidColorBrush Color="White" Opacity="0.8"/>
+                        </ListView.Background>
+                        <ListView.View>
                         <GridView x:Name="GridViewThursday">
                             <GridViewColumn Header="Ім`я" Width="92">
                                 <GridViewColumn.CellTemplate>
@@ -488,7 +603,10 @@
                 </GroupBox>
                 <GroupBox Grid.Column="2" Grid.Row="2" Header="П`ятниця">
                 <ListView x:Name="FridayListView" >
-                    <ListView.View>
+                        <ListView.Background>
+                            <SolidColorBrush Color="White" Opacity="0.8"/>
+                        </ListView.Background>
+                        <ListView.View>
                         <GridView x:Name="GridViewFriday">
                             <GridViewColumn Header="Ім`я" Width="92">
                                 <GridViewColumn.CellTemplate>
@@ -532,7 +650,10 @@
                 </GroupBox>
                 <GroupBox Grid.Column="3" Grid.Row="2" Header="Субота">
                 <ListView x:Name="SaturdayListView" >
-                    <ListView.View>
+                        <ListView.Background>
+                            <SolidColorBrush Color="White" Opacity="0.8"/>
+                        </ListView.Background>
+                        <ListView.View>
                         <GridView x:Name="GridViewSaturday">
                             <GridViewColumn Header="Ім`я" Width="92">
                                 <GridViewColumn.CellTemplate>
@@ -599,7 +720,11 @@
                     </Button>
                 </Grid>
             </Grid>
-            <Grid x:Name="NewReceptionGrid" Visibility="Visible" Grid.Row="1" Background="AliceBlue">
+            <Grid x:Name="NewReceptionGrid" Visibility="Collapsed" 
+                  Grid.Row="1">
+                <Grid.Background>
+                    <ImageBrush ImageSource="Images/Doctor1.jpg" Stretch="UniformToFill"/>
+                </Grid.Background>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="100"></ColumnDefinition>
                     <ColumnDefinition Width="45"/>
@@ -609,7 +734,11 @@
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50"></RowDefinition>
-                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="20"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
@@ -618,131 +747,179 @@
                 </Grid.RowDefinitions>
                 <Label Content="Новий запис" Grid.Column="0" Grid.Row="0"
                        Grid.ColumnSpan="3" FontSize="30" FontWeight="Bold"
-                       VerticalAlignment="Bottom"/>
-                <Label Content="Прізвище:  " Grid.Column="0" Grid.Row="1"
+                       VerticalAlignment="Bottom" Foreground="DarkSlateGray"/>
+                <Label Content="Прізвище:  " Grid.Column="0" Grid.Row="2"
                        FontSize="18" FontWeight="Bold"
-                       HorizontalAlignment="Right"
+                       HorizontalAlignment="Right" Foreground="DarkSlateGray"
                        VerticalAlignment="Center" Grid.ColumnSpan="2"/>
-                <Label Content="Ім`я:  " Grid.Column="0" Grid.Row="2"
-                       FontSize="18" FontWeight="Bold"
+                <Label Content="Ім`я:  " Grid.Column="0" Grid.Row="3"
+                       FontSize="18" FontWeight="Bold" Foreground="DarkSlateGray"
                        HorizontalAlignment="Right"
                        VerticalAlignment="Center" Grid.ColumnSpan="2" />
-                <Label Content="По-батькові:  " Grid.Column="0" Grid.Row="3"
+                <Label Content="По-батькові:  " Grid.Column="0" Grid.Row="4"
                        FontSize="18" FontWeight="Bold"
-                       HorizontalAlignment="Right"
+                       HorizontalAlignment="Right" Foreground="DarkSlateGray"
                        VerticalAlignment="Center" Grid.ColumnSpan="2" />
-                <Label Content="Дат. народ.:  " Grid.Column="0" Grid.Row="4"
+                <Label Content="Дат. народ.:  " Grid.Column="0" Grid.Row="5"
                        FontSize="18" FontWeight="Bold"
-                       HorizontalAlignment="Right"
+                       HorizontalAlignment="Right" Foreground="DarkSlateGray"
                        VerticalAlignment="Center" Grid.ColumnSpan="2" />
-                <Label Content="Лікар:  " Grid.Column="0" Grid.Row="5"
+                <Label Content="Лікар:  " Grid.Column="0" Grid.Row="7"
                        FontSize="18" FontWeight="Bold"
-                       HorizontalAlignment="Right"
+                       HorizontalAlignment="Right" Foreground="DarkSlateGray"
                        VerticalAlignment="Center" Grid.ColumnSpan="2"/>
-                <Label Content="Дата прийому:  " Grid.Column="0" Grid.Row="6"
+                <Label Content="Дата:  " Grid.Column="0" Grid.Row="8"
                        FontSize="18" FontWeight="Bold"
-                       HorizontalAlignment="Right"
+                       HorizontalAlignment="Right" Foreground="DarkSlateGray"
                        VerticalAlignment="Center" Grid.ColumnSpan="2"/>
                 <ComboBox x:Name="SurnamesComboBox" IsTextSearchEnabled="True"
-                          Grid.Column="2" Grid.Row="1" Width="200"
-                          Height="35" Background="White" HorizontalAlignment="Left"
+                          Grid.Column="2" Grid.Row="2" Width="200"
+                          Height="30" HorizontalAlignment="Left"
                           IsEditable="True" VerticalContentAlignment="Center"
-                          TextSearch.TextPath="Surname" SelectionChanged="SurnamesComboBox_SelectionChanged">
+                          TextSearch.TextPath="Surname" 
+                          FontSize="18"
+                          StaysOpenOnEdit="True"
+                          SelectionChanged="SurnamesComboBox_SelectionChanged">
+                    <ComboBox.Background>
+                        <SolidColorBrush Color="White" Opacity="0.6"/>
+                    </ComboBox.Background>
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="{Binding Surname}"/>
-                                <TextBlock Text="{Binding Name}"/>
-                                <TextBlock Text="{Binding ThirdName}"></TextBlock>
-                            </StackPanel>
+                            <TextBlock Foreground="DarkSlateGray">
+                                <TextBlock.Text>
+                                    <MultiBinding StringFormat="{}{0} {1} {2}">
+                                        <Binding Path="Surname" />
+                                        <Binding Path="Name" />
+                                        <Binding Path="ThirdName" />
+                                    </MultiBinding>
+                                </TextBlock.Text>
+                            </TextBlock>
                         </DataTemplate>
                     </ComboBox.ItemTemplate>
                 </ComboBox>
-                <TextBox x:Name="NewReceptionNameTextBox" Grid.Column="2" Grid.Row="2"
-                         Height="35" Width="200" HorizontalAlignment="Left" FontSize="20"
-                         VerticalContentAlignment="Center"/>
-                <TextBox x:Name="NewReceptionPoBatkoviTextBox" Grid.Column="2" Grid.Row="3"
-                         Height="35" Width="200" HorizontalAlignment="Left" FontSize="20"
-                         VerticalContentAlignment="Center"/>
-                <DatePicker x:Name="BirthDayOfPatient" Grid.Column="2" Grid.Row="4"
+                <TextBox x:Name="NewReceptionNameTextBox" Grid.Column="2" Grid.Row="3"
+                         Height="30" Width="200" HorizontalAlignment="Left" FontSize="18"
+                         VerticalContentAlignment="Center">
+                    <TextBox.Background>
+                        <SolidColorBrush Color="White" Opacity="0.6"/>
+                    </TextBox.Background>
+                </TextBox>
+                <TextBox x:Name="NewReceptionPoBatkoviTextBox" Grid.Column="2" Grid.Row="4"
+                         Height="30" Width="200" HorizontalAlignment="Left" FontSize="18"
+                         VerticalContentAlignment="Center">
+                    <TextBox.Background>
+                        <SolidColorBrush Color="White" Opacity="0.6"/>
+                    </TextBox.Background>
+                </TextBox>
+                <DatePicker x:Name="BirthDayOfPatient" Grid.Column="2" Grid.Row="5"
                             VerticalAlignment="Center" Width="200"
                             HorizontalAlignment="Left" >
-                </DatePicker>                      
+                    <DatePicker.Background>
+                        <SolidColorBrush Color="White" Opacity="0.6"/>
+                    </DatePicker.Background>
+                </DatePicker>
+                <Label Content="Час:  " Grid.Column="0" Grid.Row="9"
+                       FontSize="18" FontWeight="Bold"
+                       HorizontalAlignment="Right" Foreground="DarkSlateGray"
+                       VerticalAlignment="Center" Grid.ColumnSpan="2"/>
+                <TextBox x:Name="TimeOfReceptionTextBox" Grid.Column="2" Grid.Row="9"
+                         Height="35" Width="200" HorizontalAlignment="Left" FontSize="20"
+                         VerticalContentAlignment="Center">
+                    <TextBox.Background>
+                        <SolidColorBrush Color="White" Opacity="0.6"/>
+                    </TextBox.Background>
+                </TextBox>
                 <ComboBox x:Name="DoctorsComboBox"
-                          Grid.Column="2" Grid.Row="5"
-                          Background="White" BorderBrush="Black"
-                          Height="35" Width="200"
+                          Grid.Column="2" 
+                          Grid.Row="7" IsEditable="True"
+                          Height="30" Width="200"
                           HorizontalAlignment="Left"
+                          VerticalContentAlignment="Center"
                           SelectionChanged="DoctorsComboBox_SelectionChanged">
+                    <ComboBox.Background>
+                        <SolidColorBrush Color="White" Opacity="0.6"/>
+                    </ComboBox.Background>
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="{Binding Surname}"/>
-                                <TextBlock Text="{Binding Name}"/>
-                                <TextBlock Text="{Binding ThirdName}"></TextBlock>
-                            </StackPanel>
+                            <TextBlock Foreground="DarkSlateGray">
+                                <TextBlock.Text>
+                                    <MultiBinding StringFormat="{}{0} {1} {2}">
+                                        <Binding Path="Surname" />
+                                        <Binding Path="Name" />
+                                        <Binding Path="ThirdName" />
+                                    </MultiBinding>
+                                </TextBlock.Text>
+                            </TextBlock>
                         </DataTemplate>
                     </ComboBox.ItemTemplate>
                 </ComboBox>
-                <DatePicker x:Name="DateOfReception" Grid.Column="2" Grid.Row="6"
+                <DatePicker x:Name="DateOfReception" Grid.Column="2" Grid.Row="8"
                             VerticalAlignment="Center" Width="200"
-                            HorizontalAlignment="Left" />
+                            HorizontalAlignment="Left"/>                
                 <ListView x:Name="DoctorScheduleListView" Grid.Column="3" Grid.ColumnSpan="2"
-                          Grid.Row="1" Grid.RowSpan="5" Margin="30">
+                          Grid.Row="1" Grid.RowSpan="8" Margin="30" BorderBrush="DarkSlateGray">
+                    <ListView.Background>
+                        <SolidColorBrush Color="White" Opacity="0.8"/>
+                    </ListView.Background>
                     <ListView.View>
                         <GridView>
-                            <GridViewColumn Header="Поч.">
-                                <GridViewColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <TextBlock Text="{Binding StartDate}"/>
-                                    </DataTemplate>
-                                </GridViewColumn.CellTemplate>
-                            </GridViewColumn>
-                            <GridViewColumn Header="Кін.">
-                                <GridViewColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <TextBlock Text="{Binding EndDate}"/>
-                                    </DataTemplate>
-                                </GridViewColumn.CellTemplate>
-                            </GridViewColumn>
-                            <GridViewColumn Header="Пацієнт" Width="230">
-                                <GridViewColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <TextBlock Text="{Binding Surname}"/>
-                                    </DataTemplate>
-                                </GridViewColumn.CellTemplate>
-                            </GridViewColumn>
+                            <GridViewColumn Header="Поч." Width="50"/>
+                            <GridViewColumn Header="Кін." Width="50"/>
+                            <GridViewColumn Header="Пацієнт" Width="180"/>
                         </GridView>
                     </ListView.View>
                 </ListView>
                 <Button x:Name="OkNewReceptionButton"
                         Content="Добавити"
-                        Grid.Column="3" Grid.Row="6"
-                        Background="White"
-                        Height="30"
-                        Width="90"
+                        Grid.Column="3" Grid.Row="9" 
+                        Style="{StaticResource AllButtonsStyle}"
                         Click="OkNewReceptionButton_Click"/>
                 <Button x:Name="ClearAllFieldsButton"
                         Content="Очистити"
-                        Grid.Column="4"
-                        Grid.Row="6"
-                        Background="White"
-                        Height="30"
-                        Width="90"
+                        Grid.Column="4" Grid.Row="9"
+                        Style="{StaticResource AllButtonsStyle}"
                         Click="ClearAllFieldsButton_Click"/>
             </Grid>
             <Grid x:Name="AllReceptionsGrid" Visibility="Collapsed" Grid.Row="1">
+                <Grid.Background>
+                    <ImageBrush ImageSource="Images/Doctor3.jpg" Stretch="UniformToFill"/>
+                </Grid.Background>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="200"></ColumnDefinition>
+                    <ColumnDefinition Width="300"></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Column="0">
-                    <Label Content="Лікар: " Width="190"/>
-                    <ComboBox x:Name="DoctorsR" Background="White" Width="190"></ComboBox>
-                    <Label Content="Дата: " Width="190"/>
+                    <Rectangle Height="30"/>
+                    <Label Content="Лікар: " Width="190" 
+                           Foreground="DarkSlateGray" FontWeight="Bold"/>
+                    <ComboBox x:Name="DoctorsReceptionsComboBox" Width="190" IsEditable="True"
+                              IsReadOnly="True"
+                              SelectionChanged="DoctorsReceptionsComboBox_SelectionChanged">
+                        <ComboBox.Background>
+                            <SolidColorBrush Color="White" Opacity="0.6"/>
+                        </ComboBox.Background>
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Foreground="DarkSlateGray">
+                                    <TextBlock.Text>
+                                        <MultiBinding StringFormat="{}{0} {1} {2}">
+                                            <Binding Path="Surname" />
+                                            <Binding Path="Name" />
+                                            <Binding Path="ThirdName" />
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <Label Content="Дата: " Width="190"
+                           Foreground="DarkSlateGray" FontWeight="Bold"/>
                     <DatePicker x:Name="DateInReceptionsGrid" Width="190"/>
                 </StackPanel>
                 <ListView Grid.Column="1" Width="400" Height="400">
+                    <ListView.Background>
+                        <SolidColorBrush Color="White" Opacity="0.6"/>
+                    </ListView.Background>
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="Час" Width="100">
@@ -763,58 +940,60 @@
                     </ListView.View>
                 </ListView>
             </Grid>
-            <Grid x:Name="ProfileDoctorGrid" Grid.Row="1" Visibility="Collapsed">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="110"></RowDefinition>
-                    <RowDefinition Height="40"></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                </Grid.RowDefinitions>
+            <Grid x:Name="ProfileDoctorGrid" Visibility="Collapsed" 
+                  Grid.Row="1">
+                <Grid.Background>
+                    <ImageBrush ImageSource="Images/medicalBackground.png" Stretch="Fill"/>
+                </Grid.Background>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="230"></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Ellipse Grid.Column="0" Grid.Row="0" Height="90" 
-                         Width="90" HorizontalAlignment="Right">
-                    <Ellipse.Fill>
-                        <ImageBrush ImageSource="Images/profilephoto.png" Stretch="Fill"/>
-                    </Ellipse.Fill>
-                </Ellipse>
-                <StackPanel Grid.Column="1" Grid.Row="0"
-                            Orientation="Vertical"
-                            Width="200" Height="80">
+                <StackPanel Grid.Column="0">
+                    <StackPanel.Background>
+                        <SolidColorBrush Color="#FF032741" Opacity="0.5"/>
+                    </StackPanel.Background>
+                    <Rectangle Height="35"/>
+                    <Ellipse Height="100" Width="100">
+                        <Ellipse.Fill>
+                            <ImageBrush ImageSource="Images/MaleProfileIcon.png" Stretch="Fill"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
                     <TextBlock x:Name="ProfileNameTextBlock"
-                               Foreground="DarkGray"
-                               FontSize="20" FontWeight="Bold"
+                               Foreground="White"
+                               HorizontalAlignment="Center"
+                               FontSize="16" FontWeight="Bold"
                                Text="Имя"/>
                     <TextBlock x:Name="ProfileSurnameTextBlock"
-                               Foreground="DarkGray"
-                               FontSize="20" FontWeight="Bold"
+                               Foreground="White"
+                               HorizontalAlignment="Center"
+                               FontSize="16" FontWeight="Bold"
                                Text="Фамилия"/>
                     <TextBlock x:Name="ProfileThirdnameTextBlock"
-                               Foreground="DarkGray"
-                               FontSize="20" FontWeight="Bold"
+                               Foreground="White"
+                               HorizontalAlignment="Center"
+                               FontSize="16" FontWeight="Bold"
                                Text="Отчество"/>
-                </StackPanel>
-                <Button x:Name="WorkProfileButton"
-                        Grid.Column="0"
-                        Grid.Row="1"
+                    <Rectangle Height="50"/>
+                    <Button x:Name="WorkProfileButton"
                         Content="Робота"
                         Style="{StaticResource PropertyTriggerStyle1}"
                         Click="WorkProfileButton_Click"/>
-                <Button x:Name="ClientsProfileButton"
-                        Grid.Column="1"
-                        Grid.Row="1"
+                    <Button x:Name="ClientsProfileButton"
                         Content="Пацієнти"
                         Style="{StaticResource PropertyTriggerStyle1}"
                         Click="ClientsProfileButton_Click"/>
-                <Button x:Name="OwnScheduleButton"
-                        Grid.Column="2"
-                        Grid.Row="1"
+                    <Button x:Name="OwnScheduleButton"
                         Content="Розклад"
                         Style="{StaticResource PropertyTriggerStyle1}"
-                        Click="OwnScheduleButton_Click"/>                
-                <Grid x:Name="ProfileSubGrid" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="2">
+                        Click="OwnScheduleButton_Click"/>
+                    <Button x:Name="DoctorReceptionsButton"
+                        Content="Прийоми"
+                        Style="{StaticResource PropertyTriggerStyle1}"
+                        Click="DoctorReceptionsButton_Click"/>
+                </StackPanel>
+                <Grid x:Name="ProfileSubGrid" Grid.Column="1" Grid.ColumnSpan="2">
                     <Grid x:Name="ProfileWorkGrid" Visibility="Collapsed">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="250"></ColumnDefinition>
@@ -822,46 +1001,53 @@
                             <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
+                            <RowDefinition Height="50"></RowDefinition>
                             <RowDefinition></RowDefinition>
                             <RowDefinition></RowDefinition>
                             <RowDefinition></RowDefinition>
                             <RowDefinition></RowDefinition>
-                            <RowDefinition></RowDefinition>
-                            <RowDefinition></RowDefinition>
+                            <RowDefinition Height="130"></RowDefinition>
                         </Grid.RowDefinitions>
                         <Label Grid.Column="0" Grid.Row="1" HorizontalAlignment="Right"
-                               VerticalAlignment="Center" Content="e-mail: "
-                               FontSize="23" FontWeight="Bold" Foreground="DarkGray"/>
+                               VerticalAlignment="Center" Content="e-mail: " Opacity="0.9"
+                               FontSize="23" FontWeight="Bold" Foreground="White"/>
                         <Label Grid.Column="0" Grid.Row="2" HorizontalAlignment="Right"
                                VerticalAlignment="Center" Content="Моб.тел.: "
-                               FontSize="23" FontWeight="Bold" Foreground="DarkGray"/>                        
+                               FontSize="23" FontWeight="Bold" Opacity="0.9" Foreground="White"/>                        
                         <Label Grid.Column="0" Grid.Row="3" HorizontalAlignment="Right"
                                VerticalAlignment="Center" Content="Місто: "
-                               FontSize="23" FontWeight="Bold" Foreground="DarkGray"/>
+                               FontSize="23" FontWeight="Bold" Opacity="0.9" Foreground="White"/>
                         <Label Grid.Column="0" Grid.Row="4" HorizontalAlignment="Right"
                                VerticalAlignment="Center" Content="Відділ: "
-                               FontSize="23" FontWeight="Bold" Foreground="DarkGray"/>
+                               FontSize="23" FontWeight="Bold" Opacity="0.9" Foreground="White"/>
                         <Label x:Name="ProfileGridEMailLabel" Grid.Column="2" Grid.Row="1"
                                HorizontalAlignment="Left" FontSize="23" FontWeight="Bold" 
-                               Content="qqq@ukr.net" Foreground="DarkGray"/>
+                               Content="qqq@ukr.net" Opacity="0.9" Foreground="White" VerticalAlignment="Center"/>
                         <Label x:Name="ProfileGridMobileLabel" Grid.Column="2" Grid.Row="2"
                                HorizontalAlignment="Left" FontSize="23" FontWeight="Bold" 
-                               Content="+380" Foreground="DarkGray"/>
+                               Content="+380" Opacity="0.9" Foreground="White" VerticalAlignment="Center"/>
                         <Label x:Name="ProfileGridCityLabel" Grid.Column="2" Grid.Row="3"
                                HorizontalAlignment="Left" FontSize="23" FontWeight="Bold" 
-                               Content="Rivne" Foreground="DarkGray"/>
+                               Content="Rivne" Opacity="0.9" Foreground="White" VerticalAlignment="Center"/>
                         <Label x:Name="ProfileGridDepartmentLabel" Grid.Column="2" Grid.Row="4"
                                HorizontalAlignment="Left" FontSize="23" FontWeight="Bold" 
-                               Content="відділ" Foreground="DarkGray"/>
+                               Content="відділ" Opacity="0.9" Foreground="White" VerticalAlignment="Center"/>
                     </Grid>
-                    <Grid x:Name="ProfileClientsGrid" Visibility="Visible">
+                    <Grid x:Name="ProfileClientsGrid" Visibility="Collapsed">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="200"></ColumnDefinition>
+                            <ColumnDefinition Width="220"></ColumnDefinition>
                             <ColumnDefinition Width="5"></ColumnDefinition>
                             <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch"></GridSplitter>
-                        <ListView x:Name="DoctorClients" Grid.Column="0">
+                        <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch">
+                            <GridSplitter.Background>
+                                <SolidColorBrush Color="#FF124D95" Opacity="0.5"/>
+                            </GridSplitter.Background>
+                        </GridSplitter>
+                        <ListView x:Name="DoctorClients" Grid.Column="0" Height="300">
+                            <ListView.Background>
+                                <SolidColorBrush Color="White" Opacity="0.2"/>
+                            </ListView.Background>
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <TextBlock x:Name="FullNameTextBlock">
@@ -877,9 +1063,12 @@
                             </ListBox.ItemTemplate>
                         </ListView>
                         <ListView x:Name="PatientDiseaseHistory" Grid.Column="2">
+                            <ListView.Background>
+                                <SolidColorBrush Color="White" Opacity="0.1"/>
+                            </ListView.Background>
                             <ListView.ItemTemplate>
                                 <DataTemplate>
-                                    <GroupBox Header="{Binding Date}">
+                                    <GroupBox Header="{Binding Date}" Width="150">
                                         <TextBlock Text="{Binding Disease, StringFormat=Хвороба: {0}}"/>                                        
                                     </GroupBox>
                                 </DataTemplate>
@@ -889,9 +1078,11 @@
                     <Grid x:Name="ProfileScheduleGrid" Visibility="Collapsed">
                         
                     </Grid>
+                    <Grid x:Name="ProfileReceptionsGrid" Visibility="Collapsed">
+                        
+                    </Grid>
                 </Grid>                    
-            </Grid>
-            
+            </Grid>            
         </Grid>
     </Grid>
 </Window>

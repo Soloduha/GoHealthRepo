@@ -123,5 +123,22 @@
       <Name>BLL</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Doctor.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Doctor1.jpg" />
+    <Resource Include="Images\Doctor2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Doctor3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\FemaleProfileIcon.png" />
+    <Resource Include="Images\MaleProfileIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\medicalBackground.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
